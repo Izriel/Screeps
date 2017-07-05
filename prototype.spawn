@@ -58,6 +58,14 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
             }
         }
 
+	/**
+	Trying to find a way of automating minimum of creeps per role for 'upgrader', 'repairer', 'builder', 'wallRepairer'
+	*/
+	this.memory.minCreeps['upgrader'] = 3
+	this.memory.minCreeps['repairer'] = 1
+	this.memory.minCreeps['builder'] = 3
+	this.memory.minCreeps['wallRepairer'] = 1
+	
         // if none of the above caused a spawn command check for other roles
         if (name == undefined) {
             for (let role of listOfRoles) {
@@ -73,16 +81,6 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                 }
                 // if no claim order was found, check other roles
                 else {
-					if (numberOfCreeps['harvester'] < this.memory.minCreeps['harvester']) {
-						name = this.createCustomCreep(maxEnergy, role);
-						
-					}
-					if (numberOfCreeps['lorry'] < this.memory.minCreeps['lorry']) {
-						name = this.createLorry(150);
-					}
-					if (numberOfCreeps['claimer'] < this.memory.minCreeps['claimer']) {
-						name = this.createCustomCreep(maxEnergy, role);
-					}
 					if (numberOfCreeps['upgrader'] < this.memory.minCreeps['upgrader']) {
 						name = this.createCustomCreep(maxEnergy, role);
 					}
